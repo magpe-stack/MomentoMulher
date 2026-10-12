@@ -474,7 +474,7 @@ const phrases = [
     "A sua visão de futuro deve ser grande o suficiente para te motivar a levantar da cama com entusiasmo.",
     "Mantenha o seu compromisso inabalável com o sucesso pessoal e não pare até alcançar os seus objetivos mais ousados.",
     "O legado mais bonito de uma mulher é a lembrança da sua força, elegância, amor e generosidade com todos.",
-    "Construa pontes para o futuro ao mesmo tempo em que honra os ensinamentos trazidos pelos seus antepassados queridos.",
+    "Construa pontes para o futuro ao mesmo time em que honra os ensinamentos trazidos pelos seus antepassados queridos.",
     "A realização pessoal é o topo de uma montanha que se escala com passos diários de constante dedicação.",
     "Mantenha a fé de que os melhores dias da sua vida ainda estão por vir e prepare-se para eles.",
     "O seu potencial para transformar o mundo começa na mudança positiva do seu próprio ambiente de trabalho e lar.",
@@ -821,7 +821,7 @@ const phrases = [
     "A sua perspectiva única sobre a vida é um presente que merece ser compartilhado com o mundo hoje.",
     "Inspire-se nas histórias de grandes mulheres artistas e criadoras que abriram caminhos de liberdade na história.",
     "Mantenha a sua mente aberta para absorver beleza em museus, livros, conversas simples e no contato com a natureza.",
-    "A criatividade floresce no silêncio, na pausa consciente e no tempo dedicado ao descanso e à contemplação profunda.",
+    "A criatividade floresce no silêncio, na pausa consciente e no tempo dedicated ao descanso e à contemplação profunda.",
     "Seja a autora corajosa da sua história, desenhando cada capítulo com traços vivos de entusiasmo, verdade e paixão.",
     "Experimente novas técnicas, aprenda novas habilidades manuais ou intelectuais e exercite a sua mente para criar o novo.",
     "A sua expressão autêntica atrai pessoas e oportunidades alinhadas com a frequência da sua verdadeira essência humana.",
@@ -1012,9 +1012,9 @@ let currentIndex = 0;
 
 // Elementos da Interface
 const quoteText = document.getElementById('quoteText');
-const quoteContainer = document.getElementById('quoteContainer');
 const themeToggle = document.getElementById('themeToggle');
 const copyBtn = document.getElementById('copyBtn');
+const nextBtn = document.getElementById('nextBtn');
 const toast = document.getElementById('toast');
 const themeIcon = document.getElementById('themeIcon');
 
@@ -1035,7 +1035,7 @@ const moonIconSVG = `
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
 `;
 
-// Função para obter frase aleatória
+// Função para obter frase aleatória sem repetição imediata
 function getRandomPhrase() {
     let newIndex;
     do {
@@ -1046,7 +1046,7 @@ function getRandomPhrase() {
     return phrases[currentIndex];
 }
 
-// Exibir nova frase com animação de fade
+// Exibir nova frase com animação suave de fade
 function showNextPhrase() {
     quoteText.classList.add('fade-out');
     
@@ -1072,14 +1072,13 @@ function toggleTheme() {
 }
 
 // Copiar frase para a área de transferência
-function copyPhrase(e) {
-    e.stopPropagation(); // Evita que o clique troque a frase
+function copyPhrase() {
     const currentText = quoteText.textContent;
     
     navigator.clipboard.writeText(currentText).then(() => {
         showToast();
     }).catch(() => {
-        // Fallback para navegadores sem suporte ao clipboard API
+        // Fallback para navegadores legados
         const tempTextArea = document.createElement('textarea');
         tempTextArea.value = currentText;
         document.body.appendChild(tempTextArea);
@@ -1099,14 +1098,11 @@ function showToast() {
 }
 
 // Event Listeners
-quoteContainer.addEventListener('click', showNextPhrase);
-themeToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleTheme();
-});
+themeToggle.addEventListener('click', toggleTheme);
 copyBtn.addEventListener('click', copyPhrase);
+nextBtn.addEventListener('click', showNextPhrase);
 
-// Inicialização
+// Inicialização na abertura da página
 window.addEventListener('DOMContentLoaded', () => {
     quoteText.textContent = getRandomPhrase();
 });
