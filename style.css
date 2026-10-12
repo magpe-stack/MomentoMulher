@@ -32,20 +32,40 @@ body {
     overflow: hidden;
 }
 
+/* Topo: Logo + Nome (Esquerda) e Tema (Direita) */
 .top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px;
+    padding: 20px 24px;
     width: 100%;
 }
 
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.brand-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Estilo Geral dos Botões */
 .icon-btn {
     background: transparent;
     border: 2px solid var(--border-color);
     color: var(--text-color);
-    width: 54px;
-    height: 54px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -60,21 +80,21 @@ body {
     color: var(--bg-color);
 }
 
+/* Área Central da Frase */
 .content-container {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 32px;
+    padding: 32px 24px;
     text-align: center;
-    cursor: pointer;
 }
 
 .quote-text {
-    font-size: 1.75rem;
+    font-size: 1.65rem;
     font-weight: 300;
     line-height: 1.5;
-    max-width: 600px;
+    max-width: 650px;
     letter-spacing: 0.02em;
     transition: opacity 0.25s ease, transform 0.25s ease;
 }
@@ -84,16 +104,31 @@ body {
     transform: translateY(8px);
 }
 
+/* Rodapé: Botões Inferiores Centralizados */
+.bottom-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 24px;
+    width: 100%;
+}
+
+.actions-group {
+    display: flex;
+    gap: 20px;
+}
+
+/* Notificação Toast */
 .toast {
     position: fixed;
-    bottom: 32px;
+    bottom: 100px;
     left: 50%;
-    transform: translateX(-50%) translateY(100px);
+    transform: translateX(-50%) translateY(50px);
     background-color: var(--text-color);
     color: var(--bg-color);
-    padding: 12px 24px;
-    border-radius: 24px;
-    font-size: 0.9rem;
+    padding: 10px 22px;
+    border-radius: 20px;
+    font-size: 0.85rem;
     font-weight: 600;
     border: 1px solid var(--border-color);
     opacity: 0;
